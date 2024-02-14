@@ -1,5 +1,6 @@
+import Link from "next/link";
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "./apple/apple.module.scss";
 
 const Home = () => {
   return (
