@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.pictWraper {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+  }
+}

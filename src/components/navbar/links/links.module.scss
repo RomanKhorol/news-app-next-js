@@ -1,0 +1,37 @@
+.linksDiv {
+  display: flex;
+
+  gap: 50px;
+}
+
+.mobileBtn,
+.mobileLink {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .linksDiv {
+    display: none;
+  }
+  .mobileLink {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    width: 30%;
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+  }
+  .mobileBtn {
+    display: block;
+    position: absolute;
+    top: 100px;
+    right: 45px;
+    top: 80px;
+    width: 10%;
+    cursor: pointer;
+  }
+}

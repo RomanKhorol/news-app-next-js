@@ -1,0 +1,26 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 6rem;
+
+  padding: 5px;
+}
+
+.apleNewsWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+  padding: 50px;
+  position: relative;
+}
+.bgimage {
+  object-fit: cover;
+  width: auto;
+  height: auto;
+}
