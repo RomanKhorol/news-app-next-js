@@ -1,6 +1,8 @@
 import styles from "./apple.module.scss";
 import Image from "next/image";
-
+export const metadata = {
+  title: "Apple News",
+};
 const AppleNews = () => {
   return (
     <div className={styles.main}>

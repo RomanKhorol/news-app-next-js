@@ -10,16 +10,23 @@
   width: 200px;
   height: 30px;
   outline: none;
+  @media (max-width: 640px) {
+    width: 150px;
+    height: 30px;
+  }
 }
 .invalid {
   border-radius: 5px;
-  border: 2px solid #778899;
   padding: 5px;
   width: 200px;
   height: 30px;
   border: 2px solid red;
   box-shadow: 0 0 5px 1px red;
   outline: none;
+  @media (max-width: 640px) {
+    width: 150px;
+    height: 30px;
+  }
 }
 .messege {
   color: red;
