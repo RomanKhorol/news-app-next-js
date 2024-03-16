@@ -1,24 +1,37 @@
+import React, { FC } from "react";
 import styles from "./apple.module.scss";
-import Image from "next/image";
+import { AppNewsType } from "@/types/appNewsListType";
+import Link from "next/link";
+import Paginatoin from "@/components/paginations/Pagination";
+import { getAppnewsData } from "@/apies/apies";
+
 export const metadata = {
   title: "Apple News",
 };
-const AppleNews = () => {
+const AppleNews = async ({
+  searchParams,
+}: {
+  searchParams: { page: string };
+}) => {
+  const page = searchParams.page;
+  const appNewsList: AppNewsType = await getAppnewsData(parseInt(page));
+
+  const { articles } = appNewsList;
+
   return (
-    <div className={styles.main}>
-      <h1>Apple news</h1>
-      {/* <div className={styles.apleNewsWrap}>
-        <Image
-          alt="forest"
-          src={
-            "https://images.pexels.com/photos/18473907/pexels-photo-18473907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          }
-          fill
-          sizes="100vw"
-          priority={true}
-          className={styles.bgimage}
-        />
-      </div> */}
+    <div>
+      {!articles && <p>Something goes wrong</p>}
+      <ul>
+        {articles &&
+          articles.map(({ title, author }) => (
+            <li key={title}>
+              <Link href={`/apple/${author}?page=${page}`}>{title}</Link>
+            </li>
+          ))}
+      </ul>
+      <div>
+        <Paginatoin count={articles.length} />
+      </div>
     </div>
   );
 };
