@@ -4,31 +4,37 @@ import styles from "./appleItem.module.scss";
 import { FC } from "react";
 import BtnClientSiteBack from "@/components/buttonClientSiteBack/BtnClientSiteBack";
 
-export async function generateStaticParams(page: string) {
-  const res: AppNewsType = await fetch(
-    `https://newsapi.org/v2/everything?q=apple&from=2024-02-19&to=2024-02-19&sortBy=popularity&apiKey=c221d489d5974f5eb68da41545c48142&pageSize=10&page=${page}`
-  ).then((res) => res.json());
+// export async function generateStaticParams(page: string) {
+//   const res: AppNewsType = await fetch(
+//     `https://newsapi.org/v2/everything?q=apple&from=2024-03-19&to=2024-03-19&sortBy=popularity&apiKey=c221d489d5974f5eb68da41545c48142&pageSize=10&page=${page}`
+//   ).then((res) => res.json());
 
-  const { articles } = res;
-  const path = articles.map(({ author }) => ({
-    newsid: author,
-  }));
+//   const { articles } = res;
 
-  return path;
-}
+//   const path = articles.map(({ author }) => ({
+//     newsid: { author: author.toString() },
+//   }));
+//   console.log(path);
+//   return {
+//     path,
+//     fallback: false,
+//   };
+// }
 
 async function getAppnewsData(page: string) {
   const res = await fetch(
-    `https://newsapi.org/v2/everything?q=apple&from=2024-02-19&to=2024-02-19&sortBy=popularity&apiKey=c221d489d5974f5eb68da41545c48142&pageSize=10&page=${page}`
+    `https://newsapi.org/v2/everything?q=apple&from=2024-03-19&to=2024-03-19&sortBy=popularity&apiKey=c221d489d5974f5eb68da41545c48142&pageSize=10&page=${page}`
   );
   const data = await res.json();
 
   return data;
 }
+
 interface AppleNewItemPropType {
   params: { newsid: string };
   searchParams: { page: string };
 }
+
 const AppleNewItem: FC<AppleNewItemPropType> = async ({
   params,
   searchParams,

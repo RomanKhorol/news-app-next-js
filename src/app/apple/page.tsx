@@ -19,20 +19,27 @@ const AppleNews = async ({
   const { articles } = appNewsList;
 
   return (
-    <div>
-      {!articles && <p>Something goes wrong</p>}
-      <ul>
-        {articles &&
-          articles.map(({ title, author }) => (
-            <li key={title}>
-              <Link href={`/apple/${author}?page=${page}`}>{title}</Link>
-            </li>
-          ))}
-      </ul>
-      <div>
-        <Paginatoin count={articles.length} />
+    <>
+      <div className={styles.aplelistWrapper}>
+        <ul className={styles.apleNewsList}>
+          {articles &&
+            articles.map(({ title, author }) => (
+              <li key={title}>
+                <Link
+                  className={styles.linkStyle}
+                  key={title}
+                  href={`/apple/${author}?page=${page}`}
+                >
+                  {title}
+                </Link>
+              </li>
+            ))}
+        </ul>
       </div>
-    </div>
+      <div>
+        <Paginatoin />
+      </div>
+    </>
   );
 };
 export default AppleNews;

@@ -3,12 +3,9 @@
 import React, { FC, useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import styles from "./pagination.module.scss";
 
-interface paginationPropType {
-  count: number;
-}
-
-const Paginatoin: FC<paginationPropType> = ({ count }) => {
+const Paginatoin: FC = () => {
   const query = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
@@ -29,7 +26,7 @@ const Paginatoin: FC<paginationPropType> = ({ count }) => {
   };
 
   return (
-    <div>
+    <div className={styles.paginatioWrapper}>
       <button
         onClick={() => {
           handleChangePage("prev");
@@ -42,7 +39,7 @@ const Paginatoin: FC<paginationPropType> = ({ count }) => {
         onClick={() => {
           handleChangePage("next");
         }}
-        disabled={count < 10}
+        disabled={page === "10"}
       >
         Next
       </button>
